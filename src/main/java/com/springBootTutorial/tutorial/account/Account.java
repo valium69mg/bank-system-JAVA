@@ -35,12 +35,8 @@ public class Account {
 		this.accountStatus = "opened";
 		this.currentBalance = new BigInteger("0");		
 	}
-	/*
-	public HashMap<String,String> getAccountInfo() {
-		HashMap<String,String> accountInfo = new HashMap<>();
-		accountInfo.put("accountId", accountId.toString());
-	}
-	*/
+	
+	
 	public boolean validateAccountType(String accountType) {
 		List<String> accountTypeList = Arrays.asList(accountTypes);
 		if (!accountTypeList.contains(accountType)) {
