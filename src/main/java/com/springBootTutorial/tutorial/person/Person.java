@@ -19,13 +19,32 @@ public class Person {
 		this.address = new Address(this.personId);
 	}
 	
-	public Person(Integer personId,String firstName, String lastName, String dateOfBirth, String email, Address address,String taxId) {
+	public Person(Integer personId,String firstName, String lastName, String dateOfBirth, String email, Address address,String taxId) throws Exception {
 		this.personId = personId;
 		this.firstName = firstName;
 		this.dateOfBirth = dateOfBirth;
+		if (!validateDateOfBirth(dateOfBirth)) {
+			throw new Exception("An exception occurred: Date Of Birth in Person Class is incorrect, must be a valid format (YYYY-MM-DD)");
+		}
 		this.email = email;
 		this.address = address;
 		this.taxId = taxId;
+	}
+	
+	public boolean validateDateOfBirth(String dateOfBirth) {
+		for (int i = 0; i < dateOfBirth.length(); i++) {
+		    char c = dateOfBirth.charAt(i); 
+		    Integer firsDashPositionIndex = 4;
+		    Integer secondDashPositionIndex = 7;
+		    Integer numberZeroOnAscii = 48;
+		    Integer numberNineOnAscii = 57;
+		    if (i == firsDashPositionIndex | i ==  secondDashPositionIndex) {
+		    	if (c != '-') return false;
+		    } else {
+		    	if (!(c >= numberZeroOnAscii && c <= numberNineOnAscii)) return false; // IF IT IS NOT IN RANGE OF ASCII 0-9 CAN NOT BE A VALID DATE
+		    }
+		}
+		return true;
 	}
 	
 	
@@ -145,7 +164,7 @@ public class Person {
 		this.personId = 99999999;
 		this.firstName = "Carlos";
 		this.lastName = "Roman";
-		this.dateOfBirth = "1998/01/15";
+		this.dateOfBirth = "1998-01-15";
 		this.email = "carlostranquilino.cr@gmail.com";
 		this.taxId = "CARD3031KD319";
 		this.getAddress().autoFillForTest();

@@ -13,7 +13,7 @@ public class PersonClassTests {
 	Integer personId = 99999999;
 	String firstName = "Carlos";
 	String lastName = "Roman";
-	String dateOfBirth = "1998/01/15";
+	String dateOfBirth = "1998-01-15";
 	String email = "carlostranquilino.cr@gmail.com";
 	String taxId = "CARD3031KD319";
 	
@@ -24,7 +24,7 @@ public class PersonClassTests {
 	}
 	
 	@Test 
-	void CreatePersonClassWithAllParameters() {
+	void CreatePersonClassWithAllParameters() throws Exception {
 		Person testPerson = new Person(personId,firstName,lastName,dateOfBirth,email, new Address(personId),taxId);
 		Assertions.assertTrue(testPerson instanceof Object && testPerson.getAddress() != null);
 	}
