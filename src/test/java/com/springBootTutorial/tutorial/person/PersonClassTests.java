@@ -10,11 +10,22 @@ public class PersonClassTests {
 	
 	// PERSONS ATTRIBUTES 
 	public Integer testId = 99999999;
-
+	Integer personId = 99999999;
+	String firstName = "Carlos";
+	String lastName = "Roman";
+	String dateOfBirth = "1998/01/15";
+	String email = "carlostranquilino.cr@gmail.com";
+	String taxId = "CARD3031KD319";
 	
 	@Test
-	void CreatePersonClass() {
+	void CreatePersonClassWithOnlyPersonId() {
 		Person testPerson = new Person(testId);
+		Assertions.assertTrue(testPerson instanceof Object && testPerson.getAddress() != null);
+	}
+	
+	@Test 
+	void CreatePersonClassWithAllParameters() {
+		Person testPerson = new Person(personId,firstName,lastName,dateOfBirth,email, new Address(personId),taxId);
 		Assertions.assertTrue(testPerson instanceof Object && testPerson.getAddress() != null);
 	}
 	

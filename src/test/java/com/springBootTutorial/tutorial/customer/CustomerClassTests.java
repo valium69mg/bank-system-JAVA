@@ -22,6 +22,7 @@ public class CustomerClassTests {
 		Assertions.assertTrue(testCustomer instanceof Object && testCustomer != null);
 	}
 	
+
 	@Test
 	void getCustomerInfo() throws Exception {
 		Person testPerson = new Person(testId);
