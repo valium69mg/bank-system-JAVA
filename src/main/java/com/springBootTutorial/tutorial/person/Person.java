@@ -161,7 +161,6 @@ public class Person {
 	}
 		
 	public void autoFillForTest() {
-		this.personId = 99999999;
 		this.firstName = "Carlos";
 		this.lastName = "Roman";
 		this.dateOfBirth = "1998-01-15";
