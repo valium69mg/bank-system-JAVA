@@ -2,14 +2,15 @@ package com.springBootTutorial.tutorial.account;
 
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
-import com.springBootTutorial.tutorial.person.Person;
+import com.springBootTutorial.tutorial.customer.Customer;
 
 public class Account {
 
 	private Integer accountId;
-	private Person person;
+	private Customer customer;
 	private Integer accountNumber;
 	private String accountType;
 	private BigInteger currentBalance;
@@ -19,9 +20,9 @@ public class Account {
 	String[] accountStatuses = {"closed","opened"};
 	String[] accountTypes = {"personal account","business account"};
 
-	public Account(Integer accountId,Person person, Integer accountNumber, String accountType,String dateAccountOpened) throws Exception {
+	public Account(Integer accountId,Customer customer, Integer accountNumber, String accountType,String dateAccountOpened) throws Exception {
 		this.accountId = accountId;
-		this.person = person;
+		this.customer = customer;
 		if (!validateAccountType(accountType)) {
 			throw new Exception("An exception occurred: Account Type in Account Class is incorrect, must be a valid account type");
 
@@ -34,7 +35,12 @@ public class Account {
 		this.accountStatus = "opened";
 		this.currentBalance = new BigInteger("0");		
 	}
-	
+	/*
+	public HashMap<String,String> getAccountInfo() {
+		HashMap<String,String> accountInfo = new HashMap<>();
+		accountInfo.put("accountId", accountId.toString());
+	}
+	*/
 	public boolean validateAccountType(String accountType) {
 		List<String> accountTypeList = Arrays.asList(accountTypes);
 		if (!accountTypeList.contains(accountType)) {
@@ -60,10 +66,6 @@ public class Account {
 	}
 	
 	
-
-	public Person getPerson() {
-		return person;
-	}
 
 	public Integer getAccountNumber() {
 		return accountNumber;
@@ -122,7 +124,10 @@ public class Account {
 		this.dateAccountOpened = dateAccountOpened;
 		this.dateAccountOpened = dateAccountOpened;
 	}
-	
+
+	public Customer getCustomer() {
+		return customer;
+	}
 	
 	
 }

@@ -11,13 +11,14 @@ public class CustomerClassTests {
 	
 	// CUSTOMER ATTRIBUTES
 	private Integer customerId = 999;
-	public Integer testId = 99999999;
+	public Integer personId = 99999999;
 	public String testCustomerType = "personal account";
 
 	@Test
 	void CreateCustomerClass() throws Exception {
 		// PERSON
-		Person testPerson = new Person(testId);
+		Person testPerson = new Person(personId);
+		testPerson.autoFillForTest();
 		Customer testCustomer = new Customer(customerId,testPerson,testCustomerType);
 		Assertions.assertTrue(testCustomer instanceof Object && testCustomer != null);
 	}
@@ -25,7 +26,7 @@ public class CustomerClassTests {
 
 	@Test
 	void getCustomerInfo() throws Exception {
-		Person testPerson = new Person(testId);
+		Person testPerson = new Person(personId);
 		testPerson.autoFillForTest();
 		Customer testCustomer = new Customer(customerId,testPerson,testCustomerType);
 		Assertions.assertTrue(testCustomer.getCustomerInfo() instanceof Map && testCustomer.getCustomerInfo() != null);
